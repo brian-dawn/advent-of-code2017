@@ -35,10 +35,10 @@ should be intero plugins for everything.
 
 Install the following plugins:
 
-    * haskell-linter
-    * stylish-haskell
-    * hoogle-vscode
-    * haskero
+* haskell-linter
+* stylish-haskell
+* hoogle-vscode
+* haskero
 
 
 ### REPL
