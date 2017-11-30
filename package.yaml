@@ -1,0 +1,11 @@
+name:                advent-of-code2017
+version:             0.1.0.0
+
+dependencies:
+  - base >= 4.7 && < 5
+  - aeson
+
+executables:
+  advent-of-code2017:
+    source-dirs:      src
+    main:             Main.hs
