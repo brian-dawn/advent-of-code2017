@@ -22,6 +22,7 @@ More info here: https://docs.haskellstack.org/en/stable/README/
 
 The following commands are used by editor plugins and are pretty useful.
 
+    stack install intero
     stack install stylish-haskell
     stack install hlint
 
