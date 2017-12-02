@@ -13,8 +13,8 @@ solve :: String -> Int
 solve xs = foldl1 (+) $ zipWith (-) maxs mins
     where
         c = readTable xs
-        maxs = map maximum c
-        mins = map minimum c
+        maxs = maximum <$> c
+        mins = minimum <$> c
 
 findDivisible :: [Int] -> Int
 findDivisible xs = finalA `div` finalB
@@ -26,7 +26,7 @@ combinations :: [a] -> [b] -> [(a,b)]
 combinations a b = (,) <$> a <*> b
 
 solve2 :: String -> Int
-solve2 xs = foldl1 (+) $ map findDivisible nums
+solve2 xs = foldl1 (+) $ findDivisible <$> nums
     where
         nums = readTable xs
 
@@ -36,4 +36,3 @@ answer = do
     file <- readFile "input/Problem02.input"
     print $ solve file
     print $ solve2 file
-
