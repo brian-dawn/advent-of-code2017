@@ -1,4 +1,4 @@
-import re
+import regex as re
 
 PATTERN = re.compile(r'((\d)\2+)')
 
@@ -24,6 +24,16 @@ def run_2():
     return 2 * reduce(lambda a, b: a + b, [int(x) for i, x in enumerate(data) if i < loop_limit and x == data[loop_limit + i]])
 
 
+def run_2_again():
+    """Wherein I refuse to give up on regular expressions"""
+    data = read_data('day1.txt')
+    half_count = len(data)/2
+    pattern_str = r'(\d)\d{' + str(half_count - 1) + r'}\1'
+    pattern = re.compile(pattern_str)
+    matches = pattern.findall(data, overlapped=True)
+    return reduce(lambda a, b: a + b, [2 * int(match) for match in matches])
+
 if __name__ == '__main__':
     print run()
     print run_2()
+    print run_2_again()
