@@ -4,13 +4,14 @@ var captcha = require('./captcha.json');
 function addDuplicates(sequence) {
   duplicatesTotal = 0;
   for (var i = 0; i < sequence.length; i++) {
-    console.log(sequence.length);
     if (sequence[i] == sequence[i+1]) {
-      console.log("found a duplicate:    " + sequence[i]);
-      duplicatesTotal += i+i;
+      duplicatesTotal += parseInt(sequence[i]);
     }
-    return duplicatesTotal;
   }
+  if (sequence.last == sequence.first) {
+    return duplicatesTotal += parseInt(sequence[0]);
+  }
+  return duplicatesTotal;
 };
 
-console.log("sum of sequence's duplicates:   " + addDuplicates(captcha.short));
+console.log("sum of sequence's duplicates:   " + addDuplicates(captcha.long));
