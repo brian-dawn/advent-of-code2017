@@ -1,6 +1,7 @@
 name:                advent-of-code2017
 version:             0.1.0.0
-
+ghc-options:
+  - -O2
 dependencies:
   - base >= 4.7 && < 5
   - aeson
