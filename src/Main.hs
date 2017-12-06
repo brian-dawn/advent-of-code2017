@@ -4,6 +4,7 @@ import qualified Problem01 as P01
 import qualified Problem02 as P02
 import qualified Problem03 as P03
 import qualified Problem04 as P04
+import qualified Problem05 as P05
 
 main :: IO ()
 main = do
@@ -26,3 +27,8 @@ main = do
   problem4 <- (readFile "./input/problem04.txt")
   putStrLn $ "\tPart 1: " ++ (show $ P04.partOneAnswer problem4)
   putStrLn $ "\tPart 2: " ++ (show $ P04.partTwoAnswer problem4)
+
+  putStrLn "Problem 5:"
+  problem5 <- (readFile "./input/problem05.txt")
+  putStrLn $ "\tPart 1: " ++ (show $ P05.partOneAnswer problem5)
+  putStrLn $ "\tPart 2: " ++ (show $ P05.partTwoAnswer problem5)

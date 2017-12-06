@@ -6,6 +6,7 @@ dependencies:
   - aeson
   - array
   - containers
+  - vector
 
 executables:
   advent-of-code2017:
