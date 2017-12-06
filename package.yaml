@@ -5,6 +5,8 @@ dependencies:
   - base >= 4.7 && < 5
   - aeson
   - array
+  - containers
+  - multiset
 
 executables:
   advent-of-code2017:
