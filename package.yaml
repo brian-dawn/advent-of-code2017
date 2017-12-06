@@ -6,7 +6,6 @@ dependencies:
   - aeson
   - array
   - containers
-  - multiset
 
 executables:
   advent-of-code2017:

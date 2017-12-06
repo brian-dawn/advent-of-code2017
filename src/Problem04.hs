@@ -1,10 +1,8 @@
 module Problem04 where
 
+import Data.List
 import Data.Set (Set)
 import qualified Data.Set as Set
-
-import Data.MultiSet (MultiSet)
-import qualified Data.MultiSet as MultiSet
 
 splitInput :: String -> [[String]]
 splitInput = (map words) . lines
@@ -23,14 +21,11 @@ partOneAnswer = countValidPassphrases
 
 -- part 2
 
-wordToBagOfLetters :: String -> MultiSet Char
-wordToBagOfLetters = MultiSet.fromList
-
 countValidPassphrases2 :: String -> Int
 countValidPassphrases2 = length
   . filter id
   . map unique
-  . map (map wordToBagOfLetters)
+  . map (map sort) -- lol don't need bags, just sort the strings
   . splitInput
 
 partTwoAnswer = countValidPassphrases2
