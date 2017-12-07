@@ -31,3 +31,5 @@ partTwoAnswer :: String -> Int
 partTwoAnswer input = run (Program (fromList (parse input)) 0) (\x -> if x >= 3 then x - 1 else x + 1)
 
 -- try with mutable vectors tomorrow
+
+-- stack exec advent-of-code2017  31.92s user 0.69s system 99% cpu 32.692 total

@@ -1,12 +1,18 @@
 name:                advent-of-code2017
 version:             0.1.0.0
 
+ghc-options:
+#   - -Wall
+#   - -Werror
+  - -O2
+
 dependencies:
   - base >= 4.7 && < 5
   - aeson
   - array
   - containers
   - vector
+  - persistent-vector
 
 executables:
   advent-of-code2017:

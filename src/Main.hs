@@ -4,7 +4,11 @@ import qualified Problem01 as P01
 import qualified Problem02 as P02
 import qualified Problem03 as P03
 import qualified Problem04 as P04
-import qualified Problem05 as P05
+
+-- import qualified Problem05 as P05
+-- import qualified Problem05PersistentVector as P05
+import qualified Problem05IOArray as P05
+
 import qualified Problem06 as P06
 
 main :: IO ()
@@ -31,8 +35,14 @@ main = do
 
   putStrLn "Problem 5:"
   problem5 <- (readFile "./input/problem05.txt")
-  putStrLn $ "\tPart 1: " ++ (show $ P05.partOneAnswer problem5)
-  putStrLn $ "\tPart 2: " ++ (show $ P05.partTwoAnswer problem5)
+
+  -- putStrLn $ "\tPart 1: " ++ (show $ P05.partOneAnswer problem5)
+  -- putStrLn $ "\tPart 1: " ++ (show $ P05.partTwoAnswer problem5)
+
+  p5p1 <- P05.partOneAnswer problem5
+  putStrLn $ "\tPart 1: " ++ (show $ p5p1)
+  p5p2 <- P05.partTwoAnswer problem5
+  putStrLn $ "\tPart 2: " ++ (show $ p5p2)
 
   putStrLn "Problem 6:"
   problem6 <- (readFile "./input/problem06.txt")
