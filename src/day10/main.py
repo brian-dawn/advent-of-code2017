@@ -1,4 +1,7 @@
 
+BONUS_LENGTHS = [17, 31, 73, 47, 23]
+
+
 def length_list(file_name):
     with open('../../resources/' + file_name, 'r') as fp:
         return map(int, fp.read().split(','))
@@ -29,22 +32,24 @@ def run_instructions(lengths, size, skip=0, idx=0, lst=None):
         lst = flip_sublist(lst, idx, length)
         idx = (idx + length + skip) % size
         skip += 1
-    return lst
+    return lst, idx
 
 
 def run():
     lengths = length_list('day10.txt')
-    tied = run_instructions(lengths, 256)
+    tied, _ = run_instructions(lengths, 256)
     return tied[0] * tied[1]
 
 
 def run_2():
-    lengths = ascii_length_list('day10.txt')
+    lengths = ascii_length_list('day10.txt') + BONUS_LENGTHS
     size = len(lengths)
     idx, lst = 0, None
     for i in range(64):
-        lst = run_instructions(lengths, 256, skip=size*i, idx=idx, lst=lst)
-    # TODO: xor blocks of 16, convert to hex
+        lst, idx = run_instructions(lengths, 256, skip=size*i, idx=idx, lst=lst)
+    chunks = [lst[i:i + 16] for i in range(0, len(lst), 16)]
+    number_lst = [reduce(lambda a, b: a ^ b, chunk, 0) for chunk in chunks]
+    return ''.join(map("{:02x}".format, number_lst))
 
 
 if __name__ == '__main__':
