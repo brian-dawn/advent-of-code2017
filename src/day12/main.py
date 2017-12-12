@@ -11,10 +11,7 @@ def read_pipes(file_name):
 
 
 def get_pipe_map():
-    pipe_map = {}
-    for node, to_nodes in read_pipes('day12.txt'):
-        pipe_map[node] = to_nodes
-    return pipe_map
+    return {node: to_nodes for node, to_nodes in read_pipes('day12.txt')}
 
 
 def group_containing(value, pipe_map):
@@ -22,11 +19,7 @@ def group_containing(value, pipe_map):
     done = set()
     while todo:
         val = todo.pop()
-        if val in done:
-            continue
-        nodes = pipe_map[val]
-        for node in nodes:
-            todo.add(node)
+        [todo.add(node) for node in pipe_map[val] if val not in done]
         done.add(val)
     return done
 
