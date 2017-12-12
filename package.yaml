@@ -13,6 +13,7 @@ dependencies:
   - containers
   - vector
   - persistent-vector
+  - text
 
 executables:
   advent-of-code2017:
