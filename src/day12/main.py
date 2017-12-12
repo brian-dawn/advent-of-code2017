@@ -10,12 +10,15 @@ def read_pipes(file_name):
             yield int(m.group(1)), map(int, m.group(2).split(','))
 
 
-def run():
+def get_pipe_map():
     pipe_map = {}
     for node, to_nodes in read_pipes('day12.txt'):
         pipe_map[node] = to_nodes
+    return pipe_map
 
-    todo = {0}
+
+def group_containing(value, pipe_map):
+    todo = {value}
     done = set()
     while todo:
         val = todo.pop()
@@ -25,30 +28,22 @@ def run():
         for node in nodes:
             todo.add(node)
         done.add(val)
-    return len(done)
+    return done
+
+
+def run():
+    return len(group_containing(0, get_pipe_map()))
 
 
 def run_2():
-    pipe_map = {}
-    for node, to_nodes in read_pipes('day12.txt'):
-        pipe_map[node] = to_nodes
-
-    vals = set(pipe_map.keys())
+    pipe_map = get_pipe_map()
+    nodes = set(pipe_map.keys())
     groups = 0
-    while vals:
+    while nodes:
         groups += 1
-        build_group_of = vals.pop()
-        todo = {build_group_of}
-        done = set()
-        while todo:
-            val = todo.pop()
-            if val in done:
-                continue
-            nodes = pipe_map[val]
-            for node in nodes:
-                todo.add(node)
-            done.add(val)
-            vals.remove(val) if val in vals else None
+        build_group_of = nodes.pop()
+        group = group_containing(build_group_of, pipe_map)
+        nodes = nodes.difference(group)
     return groups
 
 if __name__ == '__main__':
