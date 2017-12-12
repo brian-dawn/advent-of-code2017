@@ -19,10 +19,11 @@ def run():
     done = set()
     while todo:
         val = todo.pop()
+        if val in done:
+            continue
         nodes = pipe_map[val]
         for node in nodes:
-            if node not in done:
-                todo.add(node)
+            todo.add(node)
         done.add(val)
     return len(done)
 
@@ -41,15 +42,13 @@ def run_2():
         done = set()
         while todo:
             val = todo.pop()
+            if val in done:
+                continue
             nodes = pipe_map[val]
             for node in nodes:
-                if node not in done:
-                    todo.add(node)
+                todo.add(node)
             done.add(val)
-            try:
-                vals.remove(val)
-            except KeyError:
-                pass
+            vals.remove(val) if val in vals else None
     return groups
 
 if __name__ == '__main__':
