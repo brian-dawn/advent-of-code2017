@@ -9,6 +9,8 @@ dependencies:
   - unique
   - containers
   - bytestring
+  - grid
+  - split
 
 executables:
   advent-of-code2017:
