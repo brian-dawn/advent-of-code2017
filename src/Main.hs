@@ -12,8 +12,8 @@ import qualified Problem05IOArray as P05
 import qualified Problem06 as P06
 import qualified Problem07 as P07
 import qualified Problem08 as P08
-
 import qualified Problem09 as P09
+import qualified Problem10 as P10
 import qualified Problem11 as P11
 import qualified Problem12 as P12
 
@@ -65,11 +65,15 @@ main = do
   putStrLn $ "\tPart 1: " ++ (show $ P09.partOneAnswer problem9)
   putStrLn $ "\tPart 1: " ++ (show $ P09.partTwoAnswer problem9)
 
+  putStrLn "Problem 10:"
+  problem10 <- (readFile "input/problem10.txt")
+  putStrLn $ "\tPart 1: " ++ (show $ P10.partOneAnswer problem10)
+  putStrLn $ "\tPart 1: " ++ (show $ P10.partTwoAnswer problem10)
+
   putStrLn "Problem 11:"
   problem11 <- (readFile "input/problem11.txt")
   putStrLn $ "\tPart 1: " ++ (show $ P11.partOneAnswer problem11)
   putStrLn $ "\tPart 1: " ++ (show $ P11.partTwoAnswer problem11)
-
 
   putStrLn "Problem 12:"
   problem12 <- (readFile "input/problem12.txt")
