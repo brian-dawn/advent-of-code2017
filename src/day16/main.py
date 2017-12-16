@@ -38,13 +38,9 @@ def parse(dance_str):
     return DANCE_MAP[dance_str[0]](dance_str[1:])
 
 
-def read_dance_steps(file_name):
-    with open('../../resources/' + file_name, 'r') as fp:
-        return fp.read().split(',')
-
-
 def read_dance(file_name):
-    return map(parse, read_dance_steps(file_name))
+    with open('../../resources/' + file_name, 'r') as fp:
+        return map(parse, fp.read().split(','))
 
 
 def run():
