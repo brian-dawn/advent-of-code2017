@@ -53,39 +53,14 @@ def run():
     return ''.join(result)
 
 
-def find_cycles(steps, dancers):
-    name_map = {dancer: [dancer] for dancer in dancers}
-    result = dancers
-    something_changed = True
-    while something_changed:
-        something_changed = False
-        result = reduce(lambda d, f: f(d), steps, result)
-        for i in range(len(dancers)):
-            chars = name_map[dancers[i]]
-            new_char = result[i]
-            if new_char in chars:
-                continue
-            something_changed = True
-            chars += new_char
-    return name_map
-
-
 def run_2():
-    dance_steps = read_dance_steps('day16.txt')
-    dancers = [chr(i) for i in range(ord('a'), ord('p') + 1)]
-    space_steps, name_steps = (map(parse, filter(lambda d: d[0] != 'p', dance_steps)),
-                               map(parse, filter(lambda d: d[0] == 'p', dance_steps)))
-    space_cycles = find_cycles(space_steps, dancers)
-    name_cycles = find_cycles(name_steps, dancers)
-    space_dancers = []
-    for dancer in dancers:
-        cycle = space_cycles[dancer]
-        space_dancers += cycle[ITERATIONS % len(cycle)]
-    result = []
-    for dancer in space_dancers:
-        cycle = name_cycles[dancer]
-        result += cycle[ITERATIONS % len(cycle)]
-    return ''.join(result)
+    dance_moves = read_dance('day16.txt')
+    current = [chr(i) for i in range(ord('a'), ord('p') + 1)]
+    results = []
+    while ''.join(current) not in results:
+        results.append(''.join(current))
+        current = reduce(lambda d, f: f(d), dance_moves, current)
+    return results[ITERATIONS % len(results)]
 
 if __name__ == '__main__':
     print run()
