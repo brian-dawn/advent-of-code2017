@@ -11,6 +11,8 @@ import qualified Problem08 as P08
 import qualified Problem09 as P09
 import qualified Problem10 as P10
 import qualified Problem11 as P11
+import qualified Problem12 as P12
+import qualified Problem13 as P13
 
 main :: IO ()
 main = do
@@ -25,3 +27,5 @@ main = do
   P09.answer
   P10.answer
   P11.answer
+  P12.answer
+  P13.answer
