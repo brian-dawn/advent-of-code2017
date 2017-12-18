@@ -21,6 +21,20 @@ def run_2():
         if i % (firewall[0][1] * 2 - 2) and sum_with_offset(i, firewall) == 0:
             return i
 
+
+def gets_through(offset, firewall):
+    for depth, rng in firewall:
+        if (depth + offset) % (rng * 2 - 2) == 0:
+            return False
+    return True
+
+
+def run_2_fast():
+    firewall = [s for s in read_security('day13.txt')]
+    for i in itertools.count():
+        if gets_through(i, firewall):
+            return i
+
 if __name__ == '__main__':
     print run()
-    print run_2()
+    print run_2_fast()
