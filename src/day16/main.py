@@ -29,13 +29,12 @@ def parse_partner(dance_str):
     return lambda dancers: perform_partner(a, b, dancers)
 
 
-DANCE_MAP = {
-    's': parse_spin,
-    'x': parse_exchange,
-    'p': parse_partner
-}
 def parse(dance_str):
-    return DANCE_MAP[dance_str[0]](dance_str[1:])
+    return {
+        's': parse_spin,
+        'x': parse_exchange,
+        'p': parse_partner
+    }[dance_str[0]](dance_str[1:])
 
 
 def read_dance(file_name):
@@ -53,10 +52,10 @@ def run_2():
     dance_moves = read_dance('day16.txt')
     current = [chr(i) for i in range(ord('a'), ord('p') + 1)]
     results = []
-    while ''.join(current) not in results:
-        results.append(''.join(current))
+    while not results or current != results[0]:
+        results.append(current)
         current = reduce(lambda d, f: f(d), dance_moves, current)
-    return results[ITERATIONS % len(results)]
+    return ''.join(results[ITERATIONS % len(results)])
 
 if __name__ == '__main__':
     print run()
