@@ -18,6 +18,7 @@ class Program:
     def receive(self, reg_x):
         if len(self.queue):
             self[reg_x] = self.queue.popleft()
+            self.waiting = False
             return True
         self.waiting = True
         return False
