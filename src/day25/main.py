@@ -98,13 +98,13 @@ def read_blueprints(file_name):
         return State(name, branch_0, branch_1)
 
     def parse_states(line_list):
-        states = {}
+        result = {}
         while line_list:
-            state_lines = [l for l in takewhile(lambda l: l != '\n', line_list)]
+            state_lines = [l for l in takewhile(lambda line: line != '\n', line_list)]
             state = parse_state(state_lines)
-            states[state.name] = state
+            result[state.name] = state
             line_list = line_list[len(state_lines) + 1:]
-        return states
+        return result
 
     with open('../../resources/' + file_name, 'r') as fp:
         lines = fp.readlines()
@@ -120,12 +120,5 @@ def run():
     machine.run()
     return machine.checksum()
 
-
-def run_2():
-    pass
-
-
 if __name__ == '__main__':
     print run()
-    print run_2()
-
