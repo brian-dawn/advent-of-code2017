@@ -50,10 +50,6 @@ def run_2():
     return dfs_longest(components)
 
 
-def run_2_test():
-    components = read_components('day24_test.txt')
-    return dfs_longest(components)
-
 if __name__ == '__main__':
     print run()
     print run_2()
